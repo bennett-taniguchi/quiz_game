@@ -9,9 +9,9 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
     try {
-		const page = await wikipedia.page('Batman')
-		 const html = await page.html()
-        res.status(200).json({message: JSON.stringify(html)})
+		const summary = await wikipedia.summary(req.query.keyword+"")
+	 
+        res.status(200).json({message: JSON.stringify(summary)})
         return;
 	} catch (error) {
         res.status(200).json({message: 'empty'})
